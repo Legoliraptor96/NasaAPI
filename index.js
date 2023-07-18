@@ -47,19 +47,19 @@ function llamaApiEpic(id_card) {
     })
     .then(data => {
         // Aqui es donde puedo trabajar con la info que me regresa la nasa en formato json.
-        console.log(data);
-        let numeroAleatorio = Math.floor(Math.random() * data.length)-1;
+        let numeroAleatorio = Math.floor(Math.random() * data.length) - 1;
         if (numeroAleatorio == -1){
-            let numeroAleatorio = Math.floor(Math.random() * data.length)-1;
+            numeroAleatorio = Math.floor(Math.random() * data.length) - 1;
         }
-        let nombreImagen = data[numeroAleatorio]['image']
+        // YYYY-MM-DD HH:MM:SS
+        let nombreImagen = data[numeroAleatorio]['image'];
         let fechaImagen = data[numeroAleatorio]['date'];
         let fecha = fechaImagen.split(' ')[0];
-        let componentesFecha = fecha.split('-')
-        let nuevaFechaImagen = componentesFecha[0]+'/'+componentesFecha[1]+componentesFecha[2];
-
-        let imgRes =  'https://api.nasa.gov/EPIC/archive/natural/'+ nuevaFechaImagen +'/png/'+nombreImagen+'.png?api_key=' + API_KEY_NASA;
-        document.getElementById('card'+id_card).src = imgRes;
+        let componentesFecha = fecha.split('-');
+        let nuevaFechaImagen = componentesFecha[0] + '/' + componentesFecha[1] + '/' + componentesFecha[2];
+        let imgRes = 'https://api.nasa.gov/EPIC/archive/natural/' + nuevaFechaImagen + '/png/' + nombreImagen + '.png?api_key=' + API_KEY_NASA;
+        console.log(imgRes);
+        
         
     })
     .catch(error => {
