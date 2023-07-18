@@ -1,0 +1,28 @@
+.apod_desc {
+    margin-top: 2%;
+    margin-left: 10%; 
+    margin-right: 10%;
+}
+
+.apod{
+    margin-top: 2%;
+    margin-left: 10%; 
+    margin-right: 10%;
+}
+
+.description-apod{
+    margin-top: 2%;
+    margin-left: 10%; 
+    margin-right: 10%;
+    margin-bottom: 10%;
+}
+
+footer{
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #212529;
+    color: #93ccE1;
+    font-size: large;
+    text-align: center;
+}
