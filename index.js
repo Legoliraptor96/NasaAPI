@@ -10,7 +10,7 @@ function obtenerFechaAleatoria(){
 }
 
 
-function llamaApiApod(){    
+function llamaApiApod(){
     const fechaAleatoria = obtenerFechaAleatoria();
     const url = URL_APOD + fechaAleatoria.toISOString().slice(0, 10);
     fetch(url, {method: 'GET', headers: {'Content-Type': 'application/json'}})
@@ -56,25 +56,28 @@ function llamaApiEpic(id_card) {
         let nombreImagen = data[numeroAleatorio]['image'];
         let fechaImagen = data[numeroAleatorio]['date'];
         let fecha = fechaImagen.split(' ')[0];
+        let hora = fechaImagen.split(' ')[1];
+        let latitud = data[numeroAleatorio]['centroid_coordinates']['lat'];
+        let longitud = data[numeroAleatorio]['centroid_coordinates']['lon'];
+        
         let componentesFecha = fecha.split('-');
         let nuevaFechaImagen = componentesFecha[0] + '/' + componentesFecha[1] + '/' + componentesFecha[2];
         let imgRes = 'https://api.nasa.gov/EPIC/archive/natural/' + nuevaFechaImagen + '/png/' + nombreImagen + '.png?api_key=' + API_KEY_NASA;
         console.log(imgRes);
 
-        //document.getElementById('carousel1').src = data['url'];
-        document.getElementById('card'+id_card).src= imgRes ;
+        document.getElementById('card' + id_card).src = imgRes;
         
         let cardText = document.getElementById('cardp' + id_card);
-        cardText.textContent = data[numeroAleatorio]['caption'];
+        cardText.textContent = `Date: ${fecha} - Time: ${hora} - Lat: ${latitud} - Lon: ${longitud}`;
 
-        console.log(data)
-        
+        console.log(data);
     })
     .catch(error => {
         // Manejo de errores
         console.log(error);
     })
 }
+
 
 function llamaApifhaz() {
     const fechaAleatoria = obtenerFechaAleatoria();
