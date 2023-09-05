@@ -58,6 +58,9 @@
     <script src="/index.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
+      document.addEventListener('DOMContentLoaded', function() {
+    llamaApiApod(); // Llama a llamaApiApod() una vez que la página esté completamente cargada.
+  }); 
         $(function(){
           $("#nav-placeholder").load("/menu/navbar.html");
         });

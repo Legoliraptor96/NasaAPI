@@ -10,7 +10,7 @@ function obtenerFechaAleatoria(){
 }
 
 
-function llamaApiApod(){
+function llamaApiApod(){    
     const fechaAleatoria = obtenerFechaAleatoria();
     const url = URL_APOD + fechaAleatoria.toISOString().slice(0, 10);
     fetch(url, {method: 'GET', headers: {'Content-Type': 'application/json'}})
